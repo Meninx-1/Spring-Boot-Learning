@@ -1,0 +1,38 @@
+datasource:
+  hikari:
+    minimum-idle: 1
+    #Maximum pool size is the maximum number of connection objects to be pooled. 
+    #- If the maximum pool size is reached, then the requests are queued until some
+    # connections are released back to the pool. It is therefore advisable to close the connection once done with it.
+    maximum-pool-size: 20
+  #DB_CLOSE_ON_EXIT is recommended by Spring Boot so that it handles the closing of the db when it’s ready
+  jdbcUrl: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+  driverClassName: org.h2.Driver
+
+spring:
+  main:
+    banner-mode: "off"
+
+  datasource:
+    platform: h2
+    
+#In the JDBC API, databases are accessed via DataSource objects. A DataSource has a set of properties that 
+#identify and describe the real world data source that it represents.
+#These properties include information such as the location of the database server, 
+#the name of the database, the network protocol to use to communicate with the server, and so on. 
+#In the Application Server, a data source is called a JDBC resource.
+
+#Applications access a data source using a connection, and a DataSource object can be thought of as a factory
+# for connections to the particular data source that the DataSource instance represents. 
+#In a basic DataSource implementation, a call to the getConnection method returns a connection object 
+#that is a physical connection to the data source.
+
+#DataSource objects that implement connection pooling also produce a connection to the particular data source
+# that the DataSource class represents. The connection object that the getConnection method returns is a 
+#handle to a PooledConnection object rather than being a physical connection. An application uses the connection
+# object in the same way that it uses a connection. Connection pooling has no effect on application code except 
+#that a pooled connection, like all connections, should always be explicitly closed. When an application closes
+# a connection that is pooled, the connection is returned to a pool of reusable connections. 
+#The next time getConnection is called, a handle to one of these pooled connections will be returned
+# if one is available. Because connection pooling avoids creating a new physical connection every time one
+# is requested, it can help applications run significantly faster.

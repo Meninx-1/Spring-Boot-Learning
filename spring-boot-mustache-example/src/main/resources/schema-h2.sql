@@ -1,0 +1,10 @@
+
+CREATE TABLE users (
+  id INTEGER NOT NULL PRIMARY KEY  AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,  
+  phone VARCHAR(255),
+  address VARCHAR(255)
+) ;
+ 
+CREATE UNIQUE INDEX id_user_email ON users (email);

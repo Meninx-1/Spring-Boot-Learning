@@ -1,0 +1,25 @@
+server:
+  port: 8086
+  servlet:
+    context-path: /rest
+
+spring:
+  main:
+    banner-mode: "off"
+#The JPA database value specifies the target database to operate on. 
+#We specify the Hibernate dialect, org.hibernate.dialect.H2Dialect in our case. 
+#The ddl-auto is the data definition language mode; the create-drop option automatically creates
+# and drops the database schema.
+jpa:
+    database: h2
+    hibernate:
+    dialect: org.hibernate.dialect.H2Dialect
+    # you'll likely use create-drop so that you create your schema
+    #create-drop – similar to create, with the addition that Hibernate will drop the database after all
+    # operations are completed. Typically used for unit testing
+    ddl-auto: create-drop
+
+logging:
+  level:
+    org:
+    springframework: ERROR
